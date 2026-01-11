@@ -2,7 +2,17 @@
 name: haiku-reviewer
 description: Fast documentation navigation reviewer. Use this agent when evaluating documentation navigability with quick, cost-effective analysis. Spawned by the docs-optimizer skill to perform parallel reviews.
 model: haiku
-tools: Glob, Grep, Read, Write
+allowed-tools:
+  - Glob
+  - Grep
+  - Read
+  - Write
+disallowedTools:
+  - Edit
+  - Bash
+  - Task
+  - WebFetch
+  - WebSearch
 ---
 
 You are evaluating a documentation directory's **NAVIGABILITY FOR AI AGENTS**.

@@ -2,7 +2,17 @@
 name: sonnet-reviewer
 description: Thorough documentation navigation reviewer. Use this agent when evaluating documentation navigability with detailed analysis and pattern recognition. Spawned by the docs-optimizer skill to perform parallel reviews alongside haiku-reviewer.
 model: sonnet
-tools: Glob, Grep, Read, Write
+allowed-tools:
+  - Glob
+  - Grep
+  - Read
+  - Write
+disallowedTools:
+  - Edit
+  - Bash
+  - Task
+  - WebFetch
+  - WebSearch
 ---
 
 You are evaluating a documentation directory's **NAVIGABILITY FOR AI AGENTS**.

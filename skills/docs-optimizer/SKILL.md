@@ -1,7 +1,14 @@
 ---
 name: docs-optimizer
 description: Optimizes documentation directories for AI agent navigation efficiency. Use when the user asks to "optimize documentation", "improve docs for AI", "make docs more navigable", "optimize docs navigation", "review documentation structure", mentions "documentation efficiency" or "AI navigation", or discusses improving how AI agents find information in documentation directories.
-version: 1.0.0
+version: 1.1.0
+allowed-tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - Bash
+  - Task
 ---
 
 # Documentation Optimizer

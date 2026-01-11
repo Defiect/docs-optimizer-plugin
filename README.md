@@ -84,6 +84,19 @@ We do NOT measure:
 - Whether docs cover external topics
 - User satisfaction
 
+## Changelog
+
+### v1.1.0 (2026-01-10)
+- Updated to Claude Code 2.1.x frontmatter format
+- Converted `tools` to `allowed-tools` YAML array format
+- Added `disallowedTools` to reviewer agents (prevents editing source docs)
+- Added explicit `allowed-tools` to main skill for clarity
+
+### v1.0.0
+- Initial release with Haiku/Sonnet parallel review system
+- 6-phase optimization workflow
+- Dynamic test question generation
+
 ## Credits
 
 Methodology developed through iterative testing on real documentation sets, measuring actual AI agent navigation patterns with Haiku and Sonnet reviewers.
