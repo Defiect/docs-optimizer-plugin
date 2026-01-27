@@ -1,0 +1,13 @@
+{
+  "name": "docs-optimizer-marketplace",
+  "owner": {
+    "name": "Sean"
+  },
+  "plugins": [
+    {
+      "name": "docs-optimizer",
+      "source": ".",
+      "description": "Optimizes documentation directories for AI agent navigation efficiency using parallel subagent reviews"
+    }
+  ]
+}
