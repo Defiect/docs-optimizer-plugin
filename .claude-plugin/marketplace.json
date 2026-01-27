@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "docs-optimizer",
-      "source": ".",
+      "source": "./",
       "description": "Optimizes documentation directories for AI agent navigation efficiency using parallel subagent reviews"
     }
   ]
