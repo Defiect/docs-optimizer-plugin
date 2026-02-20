@@ -19,7 +19,7 @@ cp -r docs-optimizer-plugin ~/.claude/plugins/
 Or clone directly:
 
 ```bash
-git clone <repo-url> ~/.claude/plugins/docs-optimizer-plugin
+git clone git@github.com:Defiect/docs-optimizer-plugin.git ~/.claude/plugins/docs-optimizer-plugin
 ```
 
 ## Usage
@@ -36,9 +36,12 @@ The skill auto-activates when you mention documentation optimization. Try:
 2. **First impressions audit** - Examines structure, naming, entry points
 3. **Structural changes** - Creates/improves README, fixes names, adds cross-links
 4. **Git commit** - Commits changes for safety
-5. **Parallel review** - Spawns Haiku and Sonnet reviewers simultaneously
-6. **Synthesis** - Aggregates scores and suggestions
-7. **Decision** - If score < 8, another round; if >= 8, optional finishing touches
+5. **Parallel navigation review** - Spawns Haiku and Sonnet reviewers with 10 test questions
+6. **Synthesis** - Aggregates navigation scores and suggestions
+7. **Conciseness review** (Round 2+) - Spawns conciseness reviewers with the git diff of the latest edit
+8. **Decision** - Presents navigation + conciseness scores; if < 8, another round; if >= 8, optional finishing touches
+
+Test questions are persisted to `.claude/docs-optimizer.local.md` so scores are directly comparable across rounds.
 
 ### Scoring
 
@@ -64,8 +67,14 @@ docs-optimizer-plugin/
 │           ├── playbook.md       # 4-phase methodology
 │           └── scoring-rubric.md # Scoring criteria
 ├── agents/
-│   ├── haiku-reviewer.md     # Fast reviewer
-│   └── sonnet-reviewer.md    # Thorough reviewer
+│   ├── haiku-reviewer.md              # Fast navigation reviewer
+│   ├── sonnet-reviewer.md             # Thorough navigation reviewer
+│   ├── haiku-conciseness-reviewer.md  # Fast conciseness reviewer
+│   └── sonnet-conciseness-reviewer.md # Thorough conciseness reviewer
+├── hooks/
+│   ├── hooks.json            # PreToolUse/PostToolUse hook config
+│   ├── pre-subagent.sh       # Archives reviews before subagent spawn
+│   └── post-subagent.sh      # Restores reviews after subagent completes
 └── README.md
 ```
 
@@ -78,6 +87,7 @@ This is counterintuitive but critical. We measure:
 - Wrong paths taken
 - README effectiveness
 - Scope recognition speed
+- Conciseness (redundancy, duplication, fluff)
 
 We do NOT measure:
 - Whether docs fully answer user's problem
@@ -85,6 +95,14 @@ We do NOT measure:
 - User satisfaction
 
 ## Changelog
+
+### v1.2.0 (2026-02-20)
+- Test questions persisted to `.claude/docs-optimizer.local.md` for cross-round score comparability
+- Added PreToolUse/PostToolUse hooks to isolate reviewer subagents from prior review files
+- Added file access scope restrictions to reviewer agents
+- Added Phase 5b conciseness review with dedicated haiku/sonnet conciseness reviewers
+- Expanded test questions from 5-6 to 10 with broader category ranges
+- Synthesis now presents round numbers and conciseness scores alongside navigation scores
 
 ### v1.1.0 (2026-01-10)
 - Updated to Claude Code 2.1.x frontmatter format
@@ -94,7 +112,7 @@ We do NOT measure:
 
 ### v1.0.0
 - Initial release with Haiku/Sonnet parallel review system
-- 6-phase optimization workflow
+- Optimization workflow with iterative review rounds
 - Dynamic test question generation
 
 ## Credits

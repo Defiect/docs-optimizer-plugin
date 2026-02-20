@@ -23,6 +23,11 @@ You are **NOT** evaluating whether the documentation provides good answers for e
 
 The quality of the answer for the human user is **IRRELEVANT** to your evaluation.
 
+## File Access Scope
+Only read files within the documentation directory provided to you.
+Do not read files from .claude/, /tmp/, or any other directory outside
+the documentation path.
+
 ## Your Task
 
 You will receive:

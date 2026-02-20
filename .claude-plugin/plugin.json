@@ -1,6 +1,6 @@
 {
   "name": "docs-optimizer",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Optimizes documentation directories for AI agent navigation efficiency using parallel subagent reviews and iterative improvement cycles",
   "author": {
     "name": "Sean"
@@ -11,5 +11,6 @@
     "navigation",
     "ai-efficiency",
     "subagents"
-  ]
+  ],
+  "hooks": "./hooks/hooks.json"
 }
